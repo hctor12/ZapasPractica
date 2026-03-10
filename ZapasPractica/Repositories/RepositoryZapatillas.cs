@@ -4,6 +4,23 @@ using System.Data;
 using ZapasPractica.Data;
 using ZapasPractica.Models;
 
+#region PROCEDURE
+
+/*create procedure SP_IMAGEN_ZAPATILLA
+(@posicion int, @idzapa int, @registros int OUT)
+as
+	select @registros = count(*) from IMAGENESZAPASPRACTICA
+	where IDPRODUCTO = @idzapa
+	select IDIMAGEN, IDPRODUCTO, IMAGEN from
+	(select cast(row_number() over (order by IDIMAGEN) as int)
+	POSICION, IDIMAGEN, IDPRODUCTO, IMAGEN
+	from IMAGENESZAPASPRACTICA
+	where IDPRODUCTO = @idzapa) QUERY
+	where (QUERY.POSICION = @posicion)
+go*/
+
+#endregion
+
 namespace ZapasPractica.Repositories
 {
     public class RepositoryZapatillas
