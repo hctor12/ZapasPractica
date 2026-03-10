@@ -1,0 +1,48 @@
+﻿@model Zapatilla
+
+@{
+    ImagenZapatilla imagen = (ImagenZapatilla)ViewData["IMAGEN"];
+}
+
+<ul class="list-group">
+    <li class="list-group-item list-group-item-dark">
+        <b>Nombre: @Model.Nombre</b>
+    </li>
+    <li class="list-group-item">
+        Las Nike Waffle Trainer 2 se mantienen fieles al estilo deportivo atemporal que más te gusta con el look clásico de Nike Running tradicional. Gracias a su icónica suela exterior tipo gofre, al logotipo Swoosh retro de gran tamaño y a los detalles de ante reflectantes, es una versión vintage. La mediasuela de espuma suave con cuña de espuma extrasuave es tan cómoda que debería estar prohibida, y la lengüeta de espuma expuesta añade la cantidad perfecta de reflectante
+    </li>
+    <li class="list-group-item">
+        Precio: @Model.Precio
+    </li>
+</ul>
+
+<div class="contenedor">
+    @await Html.PartialAsync("/Views/Zapatillas/_ImagenPartial.cshtml", imagen)
+</div>
+
+@section Scripts {
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+                $(document).on("click", ".cambiar", function(e){
+                    e.preventDefault();
+
+                        var posicion = $(this).data("posicion");
+                        var zapa = $(this).data("zapa");
+
+                        $.ajax({
+                                url: "/Zapatillas/GetImagenes",
+                            type: "GET",
+                            data: {posicion: posicion, zapa: zapa},
+                            success: function(data){
+                                $(".contenedor").html(data);
+                            }
+                        });
+
+                });
+        });
+
+    </script>
+}

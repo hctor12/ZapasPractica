@@ -1,0 +1,25 @@
+﻿@model ImagenZapatilla
+
+<div class="card" style="width: 28rem;">
+    <div class="card-body">
+        <p class="card-text">Imagen @ViewData["POSICION"] de @ViewData["ULTIMO"]</p>
+        <a type="button" class="btn btn-primary cambiar" data-zapa="@Model.IdProducto" data-posicion="1">
+            Primero
+        </a>
+        <button type="button" class="cambiar" data-zapa="@Model.IdProducto" data-posicion="@ViewData["ANTERIOR"]">
+            Anterior
+        </button>
+        <button type="button" class="cambiar" data-zapa="@Model.IdProducto" data-posicion="@ViewData["SIGUIENTE"]">
+            Siguiente
+        </button>
+        <button type="button" class="cambiar" data-zapa="@Model.IdProducto" data-posicion="@ViewData["ULTIMO"]">
+            Ultimo
+        </button>
+    </div>
+    <img src="@Model.Imagen">
+</div>
+
+<a asp-controller="Zapatillas" asp-action="Index">
+    Volver a Index
+</a>
+<hr/>
